@@ -15,9 +15,10 @@ and a personal favorite of mine:
 
 https://www.robots.ox.ac.uk/~vgg/software/via/
 
-<img src="https://cdn-v2.meme.com/memes/y-tho/y-tho-iconic-meme.webp" alt="but y tho" width="300">
-
 So why did I make another image labeler? Because I have tried all of these interfaces and labeled a lot of images in my time, and I have strong opinions and complaints about almost every label maker I've used.
+
+
+<img src="https://cdn-v2.meme.com/memes/y-tho/y-tho-iconic-meme.webp" alt="but y tho" width="300">
 
 Some of them are require too much time per-label: they require a manually assigned label for each annotation, they require clicking through multiple dialogs to complete a label, or they simply don't have hotkeys.
 Some of them make it difficult to import, export, and share annotations across multiple users, or they are optimized for a database or cloud-based system.
