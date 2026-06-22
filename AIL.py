@@ -31,8 +31,8 @@ async def page():
             app.storage.tab['directory'] = base_directory
             ui.navigate.to('/gallery/')
         else:
-            inputbox = ui.input(label='Input path for a directory', placeholder='start typing here').on('keydown.enter', set_directory).props('clearable').style('width: 500px')
+            inputbox = ui.input(label='Input path for an image directory', placeholder='start typing here').on('keydown.enter', set_directory).props('clearable').style('width: 500px')
 
 # might code for window resize sometime
 
-ui.run(reload=False)
+ui.run(title='AIL', reload=False)
