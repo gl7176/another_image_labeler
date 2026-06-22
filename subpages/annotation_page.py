@@ -53,7 +53,7 @@ class AnnotationRectangle:
         elif y2 != None and h != None and y1+h != y2: raise ValueError("The height given does not match difference between Y coordinates provided")
         else: self.y1, self.y2, self.height = min(y1, y2), max(y1, y2), h
 
-    def _as_SVG(self, box_fill = "none", box_color=colors['default'], box_strength = 4, additional_params = None, with_label=False):
+    def _as_SVG(self, box_fill = "none", box_color=colors['default'], box_strength = 2, additional_params = None, with_label=False):
         shape = f'''
                 <rect x="{self.x1}" y="{self.y1}" width="{self.width}" height="{self.height}" 
                     style="fill:{box_fill};stroke:{box_color};stroke-width:{box_strength}"{f'; {additional_params}' if additional_params != None else ""}" />
