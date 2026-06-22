@@ -39,3 +39,32 @@ By using our own customized labeler, we can also track the relative effort (as t
 # Current status
 At this stage I have achieved a simple bounding-box labeler with the core functions that I would want in such a program (zoom, pan, create new boxes, select and delete boxes, add labels, set the label of new boxes). And many hotkeys. I may add additional functionality in the future (e.g. modify existing boxes, modify existing labels, copy-paste existing boxes).
 However, for now I am pivoting to the "model training" component of the project, which will inform how I can export training data and import predictions from said models into the annotation interface. I am hoping that the core "loop" (annotation, periodic training, and prediction) can achieve functional deployment and use across our team-members before we get bogged down in luxury features.
+
+# Installation
+Clone or download the files and install the dependencies in _requirements.txt_ (I recommend using a virtual environment, but you do you).
+
+# Running the program
+Open your terminal of choice, activate the appropriate python environment if using virtual environments, navigate to the directory where _AIL.py_ lives, and launch with prompt _>python AIL.py_.
+
+# Questions a reasonable person might ask
+Q: ***Can I request new features?***
+
+A: Yes, but I can't promise a timeline on their delivery. Feel free to email me at [gregorydlarsen@gmail.com](mailto:gregorydlarsen@gmail.com)
+
+
+
+Q: ***why doesn't your program do this thing I want?***
+
+A: Probably becuase I haven't had the time, need, or ability to code it. 
+
+
+
+Q: ***Can I steal and adapt your code for my own project?***
+
+A: Can? Yes. Should? Probably not.
+
+
+
+Q: ***This code is bad and you should feel bad.***
+
+A: I am aware, and that is actually more of a statement than a question.
