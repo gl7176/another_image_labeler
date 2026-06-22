@@ -1,4 +1,7 @@
 # Another image labeler!
+
+<img src="https://raw.githubusercontent.com/gl7176/another_image_labeler/refs/heads/main/AIL-screenshot.png" alt="AIL in action!!" width="600">
+
 You might be asking yourself "why might I need another image labeler?" It's a good question, and maybe you don't. There are lots of good image labelers out there with better code, cleaner interfaces, and more versatility than this one. Some good starting places are:
 
 https://labelstud.io/
