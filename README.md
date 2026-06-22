@@ -60,7 +60,7 @@ A: Yes, but I can't promise a timeline on their delivery. Feel free to email me 
 
 Q: ***Why doesn't your program do this thing I want?***
 
-A: Probably becuase I haven't had the time, need, or ability to code it. 
+A: Probably because I haven't had the time, need, or ability to code it. 
 
 
 
