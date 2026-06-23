@@ -138,7 +138,7 @@ class WorkingImage:
     def _toggle_annotations(self):
         self.show_anns = not self.show_anns
         self._draw_annotations()
-        ui.notify(f'Annotations {"on" if self.show_anns else "off"}')
+        ui.notify(f'Annotations {"visible" if self.show_anns else "hidden"}')
 
     def _clear_new_annotations(self):
         self.annotations = []
@@ -172,7 +172,7 @@ class WorkingImage:
             self.selected_annotations = []
         else:
             self.mode = 'editing'
-            self.show_anns == True
+            self.show_anns = True
             ui.notify("Editing mode", props={'no_focus': True})
         self.ii.content=self._compile_SVGs()
 
@@ -199,6 +199,7 @@ class WorkingImage:
             self.editing_layer.content = f'{" ".join([box._as_SVG(box_color=colors['active'], box_strength = 8, additional_params = "stroke-dasharray='8 4'") for box in [self.annotations[i] for i in self.selected_annotations]])} {" ".join([box._as_SVG(box_color=colors['selected'], box_strength = 2) for box in [self.annotations[i] for i in self.selected_annotations]])}'
     
     ### Function that delegates functions in response to hotkeys
+    ### Could redesign this to pass arguments from outer keyboard handling
     def _handle_key(self, e: events.KeyEventArguments) -> None:
         if e.key.escape: ui.navigate.to('/gallery')
         if e.key == 'a' and not e.modifiers.ctrl and not e.action.repeat and e.action.keydown: self._toggle_annotations()
@@ -261,7 +262,9 @@ class WorkingImage:
                     self.palette.append(number_to_color(0))
             elif e.type == 'mousemove' and self.is_dragging:
                 w, h = e.image_x - self.start_x, e.image_y - self.start_y
-                self.ii.content = self._compile_SVGs() + AnnotationRectangle(min(self.start_x, e.image_x), min(self.start_y, e.image_y), w=abs(w), h=abs(h))._as_SVG(box_color=self.palette[self.classes.index(self.active_class)], box_fill='rgba(255,255,0,0.3)')
+                if self.show_anns: self.ii.content = self._compile_SVGs()
+                else: self.ii.content = ""
+                self.ii.content = self.ii.content + AnnotationRectangle(min(self.start_x, e.image_x), min(self.start_y, e.image_y), w=abs(w), h=abs(h))._as_SVG(box_color=self.palette[self.classes.index(self.active_class)], box_fill='rgba(255,255,0,0.3)')
                 
             elif (e.type == 'mouseup' or e.type == 'mouseleave') and e.button == 0 and self.is_dragging:
                 self.is_dragging, w, h = False, abs(e.image_x - self.start_x), abs(e.image_y - self.start_y)
@@ -270,7 +273,8 @@ class WorkingImage:
                         AnnotationRectangle(min(self.start_x, e.image_x), min(self.start_y, e.image_y), w=w, h=h, label=self.active_class)
                     )
                     self.save_flag = True
-                self.ii.content = self._compile_SVGs()           
+                if self.show_anns: self.ii.content = self._compile_SVGs()
+                else: aui.notify("Annotations currently hidden")
 
 
         ### Selecting boxes in "editing mode"
@@ -302,7 +306,7 @@ class WorkingImage:
             if self.classes == []:
                 ui.notify('No classes yet: press O then enter a class to start annotating')
                 return
-            if self.show_anns and self.mode == 'drawing':
+            if self.mode == 'drawing':
                 box_drawing(e)
                 self.editing_layer.content = ""
             if self.show_anns and self.mode == 'editing':
